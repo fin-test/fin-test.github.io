@@ -1,0 +1,83 @@
+<?php
+
+$tiktok = $_GET['sub3'];
+$ga = urldecode($_GET['sub4']);
+$fb = $_GET['sub5'];
+
+$splitGA = explode('/', $ga);
+
+?>
+
+<!DOCTYPE html>
+<html lang=en id=html>
+<head>
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <link rel=icon href=favicon.ico>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap&subset=cyrillic"
+          rel=stylesheet>
+    <title>financial_updated</title>
+    <link href=css/app.dddbd549.css rel=preload as=style>
+    <link href=css/chunk-vendors.391ed6f9.css rel=preload as=style>
+    <link href=js/app.a5f69b74.js rel=preload as=script>
+    <link href=js/chunk-vendors.e8494b43.js rel=preload as=script>
+    <link href=css/chunk-vendors.391ed6f9.css rel=stylesheet>
+    <link href=css/app.dddbd549.css rel=stylesheet>
+        <?php if (!empty($fb)) { ?>
+        	<!-- Facebook Pixel Code -->
+        		<script> !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '<?php echo $fb; ?>'); fbq('track', 'PageView'); </script>
+        	<!-- End Facebook Pixel Code -->
+        <?php } ?>
+        <?php if (!empty($ga)) { ?>
+        	<!-- Global site tag (gtag.js) - Google Ads:  -->
+        	<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $splitGA[0]; ?>"></script>
+        	<script>
+        		window.dataLayer = window.dataLayer || [];
+        		function gtag(){dataLayer.push(arguments);}
+        		gtag('js', new Date());
+
+        		gtag('config', '<?php echo $splitGA[0]; ?>');
+        	</script>
+
+        	<script>
+        		function gtag_report_conversion(url) {
+        			var callback = function () {
+        				if (typeof(url) != 'undefined') {
+        					window.location = url;
+        				}
+        			};
+        			gtag('event', 'conversion', {
+        				'send_to': '<?php echo $ga; ?>',
+        				'event_callback': callback
+        			});
+        			return false;
+        		}
+        	</script>
+        <?php } ?>
+        <?php if (!empty($tiktok)) { ?>
+            <script>
+                !function (w, d, t) {
+                    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+
+
+                    ttq.load('<?php echo $tiktok; ?>');
+                    ttq.page();
+                }(window, document, 'ttq');
+            </script>
+
+        <?php } ?>
+</head>
+<body>
+<?php if (!empty($fb)) { ?>
+	<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=<?php echo $fb; ?>&ev=PageView&noscript=1" /></noscript>
+<?php } ?>
+
+<noscript><strong>We're sorry but financial_updated doesn't work properly without JavaScript enabled. Please enable it
+    to continue.</strong></noscript>
+<div id=app></div>
+<input type="hidden" name="sub1" value="{subid}">
+<script src=js/chunk-vendors.e8494b43.js></script>
+<script src=js/app.a5f69b74.js></script>
+</body>
+</html>
